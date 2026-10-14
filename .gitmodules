@@ -1,0 +1,6 @@
+[submodule "IROS26_CuboidMACC"]
+	path = IROS26_CuboidMACC
+	url = https://github.com/ameykore/IROS26_CuboidMACC.git
+[submodule "bcp2-mapf"]
+	path = bcp2-mapf
+	url = https://github.com/ameykore/bcp2-mapf.git
