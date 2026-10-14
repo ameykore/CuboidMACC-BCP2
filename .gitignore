@@ -13,4 +13,4 @@ venv/
 .vscode/
 *.code-workspace
 
-src/cpp/reachability*.so
+src/cpp/*.so
