@@ -1,0 +1,14 @@
+build/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.log
+.env
+.aws/
+.codex/
+.agents/
+
+# VS Code settings and workspace files
+.vscode/
+*.code-workspace
