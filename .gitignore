@@ -12,3 +12,5 @@ venv/
 # VS Code settings and workspace files
 .vscode/
 *.code-workspace
+
+src/cpp/reachability*.so
