@@ -1,4 +1,5 @@
 # CuoidMACC-BCP2
+In this project we are trying to replace low level solver for cuboid MACC to BCP2.  
 
 ## MACC Setup and Run
 This is the minimal setup needed to run MACC on a new machine.
@@ -57,4 +58,53 @@ results = process_folder_of_structures(
 
 print(results)
 PY
+```
+
+## BCP2-MAPF Setup and Run
+### 1. Install Gurobi
+Obtain an academic license for [Gurobi](https://www.gurobi.com/academics).
+
+After extracting Gurobi, add it to your shell environment. Example for Gurobi 13.0.1
+```bash
+export GUROBI_HOME="$HOME/gurobi1301/linux64"
+export PATH="$GUROBI_HOME/bin:$PATH"
+export LD_LIBRARY_PATH="$GUROBI_HOME/lib:${LD_LIBRARY_PATH:-}"
+```
+Add these lines to ~/.bashrc if you want them loaded automatically, then run:
+
+```bash
+source ~/.bashrc
+```
+Verify
+```bash
+gurobi_cl --version
+gurobi_cl --license
+```
+### 2. Update BCP2 for Gurobi 13
+
+In CMakeLists.txt, find:
+```
+find_library(GUROBI_LIBRARY
+    NAMES gurobi120
+```
+For Gurobi 13.0.1, change it to:
+```
+find_library(GUROBI_LIBRARY
+    NAMES gurobi130 gurobi120
+```
+### 3. Build BCP2
+From the bcp2-mapf repository root:
+``` bash
+cmake -DGUROBI_DIR="$GUROBI_HOME" -B build .
+cmake --build build --target bcp2-mapf --parallel
+#The executable should be:
+build/bcp2-mapf
+```
+### 4. Run BCP2
+Example test:
+``` bash
+./build/bcp2-mapf \
+    --time-limit=30 \
+    --agent-limit=10 \
+    instances/movingai/Berlin_1_256-random-1.scen
 ```
