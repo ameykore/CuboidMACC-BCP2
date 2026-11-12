@@ -108,3 +108,10 @@ Example test:
     --agent-limit=10 \
     instances/movingai/Berlin_1_256-random-1.scen
 ```
+
+### Debug command added
+``` bash
+cmake -S . -B build-debug \
+    -DCMAKE_BUILD_TYPE=Debug \
+    -DGUROBI_DIR="$GUROBI_HOME"
+```
